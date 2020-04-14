@@ -39,7 +39,7 @@ Créer, au sein du fichier `Form.php`, une classe Form qui s'occupera de génér
 * Un bouton submit `<button type="submit"></button>`
 * Un textarea `<textarea ...> ...</textarea>`
 * Un radio button `<input type="radio"...>`
-* Une méthode build qui permettra de générer le code HTML du formulaire.
+* Une méthode build qui permettra de générer le code HTML du formulaire. 
 
 Utilisez des noms de propriétés et de méthodes qui ont du sens, restez simple et commentez votre code.
 
