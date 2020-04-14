@@ -16,8 +16,5 @@ $form->addTextField('lastname',$lastname); // créer un input de type texte avec
 $form->addTextField('firstname',$firstname); // créer un input de type texte avec comme valeur par défaut $prenom
 $form->addSubmitButton('Save'); //Créer un bouton pour soumettre le formulaire se nommant Modifier
 
-foreach ($form->fields as $field) {
-    echo $field.' ';
-}
 
 echo $form->build(); // générer le formulaire

@@ -22,12 +22,19 @@ class Form{
     }
 
     function build(){
-       return 
-       '<form action="'.$this->action .'" method="'. $this->method.'">
-        <input name="lastname" value="'.$this->fieldName.'" >
-        <input name="firstname" value="'.$this->fieldValue.'" >
-        <input type="submit" value="Save" >
-        </form>';
+        $html = '<form action="'.$this->action .'" method="'. $this->method.'">';
+        foreach($this->fields as $key => $value) {
+            $html .= "<input name='$key' value='$value' >";
+        }
+        $html.='<input type="submit" value="Save">';
+        $html .='</form>';
+        return $html;
+    
+
+
+
+        
+        
+}
     }
 
-}
