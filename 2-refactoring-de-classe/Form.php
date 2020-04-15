@@ -1,5 +1,20 @@
 <?php
-class Form{
+
+class TextField{
+    public $fieldName;
+    public $fieldValue;
+
+    function __construct($fieldName, $fieldValue){
+        $this->fieldName = $fieldName;
+        $this->fieldValue = $fieldValue;
+        return "<input type='text' name='$this->fieldName' value='$this->fieldValue'>";
+    }
+
+}
+
+
+
+class Form extends TextField{
 
     private $fields;
     private $method;
@@ -13,7 +28,7 @@ class Form{
     }
     public function addTextField(String $fieldName, String $fieldValue)
     {
-        $this->fields[] = "<input type='text' name='$fieldName' value='$fieldValue'>";
+        $this->fields[] = new TextField($fieldName,$fieldValue);
         return $this;
     }
     public function addNumberField(String $fieldName, int $fieldValue) {
