@@ -1,5 +1,5 @@
 <?php
-class Form{
+class Form extends HtmlField{
     private $action;
     private $method;
     private $fields;
@@ -10,10 +10,13 @@ class Form{
         $this->method = $method;
     }
 
-    function addTextField(string $fieldName ,string $fieldValue){
+    function addTextField($name, $value){
+         $this->fields[] = new TextField($name, $value);
+    }
+    /*function addTextField(string $fieldName ,string $fieldValue){
         $this->fields[] = "<input type = 'text' name = '$fieldName' value = '$fieldValue'>";
         return $this;
-    }
+    }*/
     function addSubmitButton(String $text){
         $this->button= "<input type = 'submit' value ='$text'>";        
     }
