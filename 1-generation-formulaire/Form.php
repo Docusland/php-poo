@@ -37,8 +37,11 @@ class Form{
     public function addSelectField (string $option, string $nameField, string $valueField)
     {
         foreach ($otpions as $key => $option) {
-            # code...
+            $genere_html .= "<option value= '$key'>$option</option>";
         }
+        $genere_html .= "</select>";
+        $this->fields[] = $genere_html;
+        return $this;
     }
 }
 

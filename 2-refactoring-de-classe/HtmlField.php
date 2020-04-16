@@ -13,4 +13,5 @@ abstract class HtmlField {
             $this->value = $value;
         }
     }
+    abstract public function __toString();
 }
