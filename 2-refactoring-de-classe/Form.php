@@ -4,9 +4,9 @@ include 'TextField.php';
 include 'NumberField.php';
 include 'CheckBoxField.php';
 
+
 class Form
 {
-
     private $fields = [];
     private $method;
     private $action;
