@@ -13,7 +13,7 @@ class CheckboxField extends HtmlField{
         }
     }
     function __tostring(){
-    $checked = ($rhis->fieldValue)?'checked':'';
+    $checked = ($this->fieldValue)?'checked':'';
     return "<input type='checkbox' name='$this->fieldName' $checked>";
     }
 }
