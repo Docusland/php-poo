@@ -1,20 +1,12 @@
 <?php
 
-class TextField{
-    public $fieldName;
-    public $fieldValue;
-
-    function __construct($fieldName, $fieldValue){
-        $this->fieldName = $fieldName;
-        $this->fieldValue = $fieldValue;
-        return "<input type='text' name='$this->fieldName' value='$this->fieldValue'>";
-    }
-
-}
+include_once 'TextField.php';
+include_once 'NumberField.php';
+include_once 'CheckboxField.php';
 
 
 
-class Form extends TextField{
+class Form{
 
     private $fields = [];
     private $method;
@@ -29,18 +21,17 @@ class Form extends TextField{
     public function addTextField(String $fieldName, String $fieldValue)
     {
         $this->fields[] = new TextField($fieldName,$fieldValue);
-        return $this;
+        
     }
-    public function addNumberField(String $fieldName, int $fieldValue) {
-        $this->fields[] = "<input type='number' name='$fieldName' value='$fieldValue'>";
-        return $this;
-    }
+    public function addNumberField(String $fieldName, int $fieldValue) 
+    {        
+        $this->fields[] = new NumberField($fieldName,$fieldValue);
 
+    }
     public function addCheckboxField(String $fieldName, bool $fieldValue)
     {
-        $checked = ($fieldValue)?'checked':'';
-        $this->fields[] = "<input type='checkbox' name='$fieldName' $checked>";
-        return $this;
+        
+        $this->fields[] = new CheckboxField($fieldName,$fieldValue);
 
     }
     public function addSubmitButton($text)

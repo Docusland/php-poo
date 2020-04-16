@@ -1,10 +1,10 @@
 <?php
-include 'Form.php';
+include_once 'Form.php';
 
 // YOUR CODE HERE
 $action = '#';
 $method = 'POST';
-$name = 'Pandémie';
+$name = 'Pandemie';
 $min_age = 14;
 $min_players = 2;
 $max_players = 4;
