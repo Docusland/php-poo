@@ -1,5 +1,4 @@
 <?php
-
 abstract class HtmlField
 {
     protected $field;
@@ -17,7 +16,8 @@ abstract class HtmlField
         $this->value = $value;
         if ($this->isValid($value))
         {
-            //traiteme ,,,,,,,,,,,,,,,,,,,,,ccvnt html
+            return true;
+            //traitement html
         }
     }
 }
