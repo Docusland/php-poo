@@ -12,12 +12,11 @@ abstract class HtmlField
 
     public function __construct($name, $value)
     {
-        $this->name= $name;
-        $this->value = $value;
         if ($this->isValid($value))
         {
-            return true;
-            //traitement html
+            $this->name= $name;
+            $this->value = $value;
         }
     }
+    abstract public function __toString();
 }

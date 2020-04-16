@@ -17,19 +17,23 @@ class Form
         $this->action = $action;
         $this->method = $method;
     }
+    public function addField(HtmlField $field)
+{
+        $this->fields[] = $field;
+    }
     public function addTextField(String $fieldName, String $fieldValue)
     {
-        $this->fields[] = new TextField($fieldName, $fieldValue);
+        $this->addField(new TextField($fieldName, $fieldValue));
         return $this;
     }
     public function addNumberField(string $fieldName, int $fieldValue)
     {
-        $this->fields[] = new NumberField($fieldName, $fieldValue);
+        $this->addField(new NumberField($fieldName, $fieldValue));
         return $this;
     }
     public function addCheckBoxField(string $fieldName, bool $fieldValue)
     {
-        $this->fields[] = new CheckBoxField($fieldName, $fieldValue);
+        $this->addField(new CheckBoxField($fieldName, $fieldValue));
         return $this;
     }
     public function addSubmitButton($BouttonValue)

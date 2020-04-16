@@ -6,12 +6,12 @@ class CheckBoxField extends HtmlField
     {
         if(is_bool($value))
         {
-            $checked = ($value)?'checked':'';
-            $this->field = "<input type='checkbox' name='$this->name' $checked>";
+            return true;
         }
     }
     public function __toString()
     {
-        return $this->field;
+        $checked = ($this->value)?'checked':'';
+        return $this->field = "<input type='checkbox' name='$this->name' $checked>";
     }
 }
