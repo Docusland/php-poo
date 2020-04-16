@@ -7,10 +7,13 @@ abstract class HtmlField {
         return true;
     }
 
+    abstract function __toString();
+
     public function __construct($name, $value) {
         if ($this->isValid($value)) { 
             $this->name= $name;
             $this->value = $value;
         }
     }
+
 }
