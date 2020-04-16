@@ -1,5 +1,12 @@
 <?php
-class Form extends html {
+
+include 'HtmlField.php';
+include 'TextField.php';
+include 'NumberField.php';
+include 'CheckBoxField.php';
+
+class Form
+{
 
     private $fields = [];
     private $method;
@@ -11,47 +18,33 @@ class Form extends html {
         $this->action = $action;
         $this->method = $method;
     }
-    public function addField(String $fieldName, String $fieldValue)
+    public function addTextField(String $fieldName, String $fieldValue)
     {
-        $this->fields[] .= new html($fieldName, $fieldValue);
+        $this->fields[] = new TextField($fieldName, $fieldValue);
         return $this;
     }
-    public function addSubmitButton($text)
+    public function addNumberField(string $fieldName, int $fieldValue)
     {
-        $this->button = "<input type='submit' value='$text'>";
+        $this->fields[] = new NumberField($fieldName, $fieldValue);
+        return $this;
+    }
+    public function addCheckBoxField(string $fieldName, bool $fieldValue)
+    {
+        $this->fields[] = new CheckBoxField($fieldName, $fieldValue);
+        return $this;
+    }
+    public function addSubmitButton($BouttonValue)
+    {
+        $this->button = "<input type='submit' value='$BouttonValue'>";
     }
     public function build()
     {
-        echo "<form action='$this->action' method='$this->method'>";
+        $html = "<form action='$this->action' method='$this->method'>";
         foreach($this->fields as $field){
-            echo $field;
+            $html .= $field;
         }
-        $html = $this->button;
+        $html .= $this->button;
         $html .= '</form>';
-        echo $html;
-    }
-}
-
-class html
-{
-    private $field;
-
-    public function __construct(string $fieldName, $fieldValue) // détermine le type de champ et rempli $field en fonction ..
-                                                                // pas terminé manque l'implémentatioin du boutton et le découpage en méthodes.
-    {
-        if (is_integer($fieldValue)) {
-            $this->field = "<input type='text' name='$fieldName' value='$fieldValue'>";
-        } elseif (is_string($fieldValue)) {
-            $this->field = "<input type='text' name='$fieldName' value='$fieldValue'>";
-        }
-        elseif (is_bool($fieldValue))
-        {
-            $checked = ($fieldValue)?'checked':'';
-            $this->fields = "<input type='checkbox' name='$fieldName' $checked>";
-        }
-    }
-    public function __toString()
-    {
-        return $this->field;
+        return $html;
     }
 }

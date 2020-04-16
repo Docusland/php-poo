@@ -11,11 +11,11 @@ $max_players = 4;
 $is_available = (bool) true;
 
 $form = new Form($action, $method);
-$form->addField('name',$name)
-    ->addField('min_age',$min_age)
-    ->addField('min_players',$min_players)
-    ->addField('max_players',$max_players)
-    ->addField('is_available', $is_available);
+$form->addTextField('name',$name)
+    ->addNumberField('min_age',$min_age)
+    ->addNumberField('min_players',$min_players)
+    ->addNumberField('max_players',$max_players)
+    ->addCheckBoxField('is_available', $is_available);
 
 $form->addSubmitButton('Modifier');
 
