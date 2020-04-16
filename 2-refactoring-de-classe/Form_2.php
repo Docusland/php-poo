@@ -16,6 +16,11 @@ class Form{
         $this->fields[] = "<input type='text' name='$fieldName' value='$fieldValue'>";
         return $this;
     }
+    public function addTextAreaField(String $fieldName, string $fieldValue)
+    {
+        $this->fields[] = "<textarea name='$fieldName' value='$fieldValue'>";
+        return $this;
+    }
     public function addNumberField(String $fieldName, int $fieldValue) {
         $this->fields[] = "<input type='number' name='$fieldName' value='$fieldValue'>";
         return $this;
