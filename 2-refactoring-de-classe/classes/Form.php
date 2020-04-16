@@ -1,5 +1,8 @@
 <?php
-include 'HtmlField.php';
+
+spl_autoload_register(function ($class) {
+    include $class.'.php';
+});
 
 class Form{
 
@@ -13,21 +16,22 @@ class Form{
         $this->action = $action;
         $this->method = $method;
     }
-    public function addTextField(String $name, String $value)
-    {
-        $this->fields[] = new TextField($name, $value);
+    private function addField(HtmlField $field) {
+        $this->fields[] = $field;
         return $this;
     }
-    public function addNumberField(String $name, int $value) {
-        $this->fields[] = new NumberField($name, $value);
-        return $this;
+    public function addTextField(String $name, String $value)
+    {
+        return $this->addField(new TextField($name, $value));
+    }
+    public function addNumberField(String $name, int $value)
+    {
+        return $this->addField(new NumberField($name, $value));
     }
 
     public function addCheckboxField(String $name, bool $value)
     {
-        $this->fields[] = new CheckboxField($name, $value);
-        return $this;
-
+        return $this->addField(new CheckboxField($name, $value));
     }
     public function addSubmitButton($text)
     {
