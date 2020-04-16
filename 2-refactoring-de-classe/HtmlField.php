@@ -1,7 +1,8 @@
 <?php
+
 abstract class HtmlField {
-    protected $name;
-    protected $value;
+    protected $fieldName;
+    protected $fieldValue;
 
     private function isValid($value){
         return true;
@@ -9,8 +10,8 @@ abstract class HtmlField {
 
     public function __construct($name, $value) {
         if ($this->isValid($value)) { 
-            $this->name= $name;
-            $this->value = $value;
+            $this->fieldName= $name;
+            $this->fieldValue = $value;
         }
     }
 }
