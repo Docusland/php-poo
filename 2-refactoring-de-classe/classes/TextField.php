@@ -4,14 +4,13 @@
 class TextField extends HtmlField {
 
     protected function isValid($value) {
-        $valid = true;
         if ((!is_string($value)) || (!$value)) {
-            $valid = false;
+            throw new InvalidStringException('Please enter a string');
         }
         if ((strlen($value) < 2) && (strlen($value) > 150)) {
-            $valid = false;
+            throw new InvalidStrLenException('Invalid length of string');
         }
-        return $valid;
+        return true;
     }
     public function __toString() {
         return "<input type=\"text\" name=\"".$this->name."\" value=\"".$this->value."\">";

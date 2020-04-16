@@ -4,10 +4,9 @@ class CheckboxField extends HtmlField {
 
     protected function isValid($value) {
         if ((!is_bool($value)) || (!$value)) {
-            $valid = false;
+            throw new InvalidBoolException('Please enter a boolean');
         }
-        $valid = true;
-        return $valid;
+        return true;
     }
     public function __toString() {
         return "<input type='checkbox' name='$this->name' $this->value>";

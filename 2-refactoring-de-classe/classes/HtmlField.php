@@ -4,16 +4,14 @@ abstract class HtmlField {
     protected $value;
 
     protected function isValid($value){
-        $valid = true;
-        return $valid;
+        return true;
     }
 
     public function __construct($name, $value) {
         if ($this->isValid($value)) { 
             $this->name= $name;
             $this->value = htmlspecialchars($value);
-        } else {
-            throw new Exception('Please enter a valid value');
         }
     }
+    abstract public function __toString();
 }

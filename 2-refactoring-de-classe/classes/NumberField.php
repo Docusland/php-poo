@@ -3,14 +3,13 @@
 class NumberField extends HtmlField {
 
     protected function isValid($value) {
-        $valid = true;
         if ((!is_numeric($value)) || (!$value)) {
-            $valid = false;
+            throw new InvalidIntException('Please enter a integer');
         }
         if ($this->value < 0) {
-            $valid = false;
+            throw new PositiveIntException('Value must be positive');
         }
-        return $valid;
+        return true;
     }
     public function __toString() {
         return "<input type=\"text\" name=\"".$this->name."\" value=\"".$this->value."\">";
