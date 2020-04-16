@@ -16,7 +16,7 @@ class TextField{
 
 class Form extends TextField{
 
-    private $fields;
+    private $fields = [];
     private $method;
     private $action;
     private $button;
