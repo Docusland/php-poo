@@ -1,4 +1,10 @@
 <?php
+include 'HtmlField.php';
+include 'CheckboxField.php';
+include 'NumberField.php';
+include 'TextField.php';
+
+
 class Form{
 
     private $fields = [];
@@ -13,7 +19,7 @@ class Form{
     }
     public function addTextField(String $fieldName, String $fieldValue)
     {
-        $this->fields[] = "<input type='text' name='$fieldName' value='$fieldValue'>";
+        $this->fields[] = new Textfield();
         return $this;
     }
     public function addNumberField(String $fieldName, int $fieldValue) {
