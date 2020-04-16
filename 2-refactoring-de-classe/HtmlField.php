@@ -1,8 +1,10 @@
 <?php
+
 abstract class HtmlField {
     protected $name;
     protected $value;
-
+    
+    //abstract public function __toString();
     private function isValid($value){
         return true;
     }

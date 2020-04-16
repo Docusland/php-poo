@@ -1,7 +1,12 @@
 <?php
-class Form{
+include 'HtmlField.php';
+include 'TextField.php';
+include 'NumberField.php';
+include 'CheckboxField.php';
 
-    private $fields = [];
+class Form extends HtmlField{
+
+    protected $fields;
     private $method;
     private $action;
     private $button;
@@ -11,26 +16,37 @@ class Form{
         $this->action = $action;
         $this->method = $method;
     }
-    public function addTextField(String $fieldName, String $fieldValue)
-    {
-        $this->fields[] = "<input type='text' name='$fieldName' value='$fieldValue'>";
+    private function addField(HtmlField $field) {
+        $this->fields[] = $field;
         return $this;
     }
-    public function addNumberField(String $fieldName, int $fieldValue) {
-        $this->fields[] = "<input type='number' name='$fieldName' value='$fieldValue'>";
-        return $this;
+    public function addTextField(String $name, String $value){
+        return $this->addField(new TextField($name,$value));
+    }
+    public function addNumberField($name ,$value) {
+        return $this->addField(new NumberField($name, $value));   
     }
 
-    public function addCheckboxField(String $fieldName, bool $fieldValue)
+    public function addCheckboxField($name ,$value)
     {
-        $checked = ($fieldValue)?'checked':'';
-        $this->fields[] = "<input type='checkbox' name='$fieldName' $checked>";
-        return $this;
-
+        return $this->addField ( new CheckboxField($name, $value));
     }
+
     public function addSubmitButton($text)
     {
         $this->button = "<input type='submit' value='$text'>";
+    }
+    function addSelectField( $options,string  $name , $method){
+
+        $html= "<select name='$name'>";
+        foreach ($options as $key => $option){ 
+            $html .= "<option value='$key'>
+            $option
+            </option>";
+        }
+        $this->fields[] = $html;
+        $html .= "</select>";
+        return $this;
     }
     public function build()
     {
