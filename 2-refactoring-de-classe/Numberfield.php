@@ -16,5 +16,6 @@ class NumberField extends HtmlField{
     return "<input type='number' name='$this->fieldName' value='$this->fieldValue'>";
     }
 }
+
 ?>
 
