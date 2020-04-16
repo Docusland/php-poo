@@ -11,27 +11,33 @@ class Form{
         $this->action = $action;
         $this->method = $method;
     }
-    public function addTextField(String $fieldName, String $fieldValue)
+
+    public function addTextField(string $name, string $value)
     {
-        $this->fields[] = "<input type='text' name='$fieldName' value='$fieldValue'>";
+        $this->fields[] = new TextField($name, $value); //mon navigateur m'indique une erreur à cette ligne mais je ne trouve pas l'erreur
         return $this;
     }
+
+
     public function addNumberField(String $fieldName, int $fieldValue) {
-        $this->fields[] = "<input type='number' name='$fieldName' value='$fieldValue'>";
+        $this->fields[] = new NumberField($name, $value);
         return $this;
     }
+
 
     public function addCheckboxField(String $fieldName, bool $fieldValue)
     {
         $checked = ($fieldValue)?'checked':'';
-        $this->fields[] = "<input type='checkbox' name='$fieldName' $checked>";
+        $this->fields[] = new CheckboxField($name, $value);
         return $this;
-
     }
+
+
     public function addSubmitButton($text)
     {
         $this->button = "<input type='submit' value='$text'>";
     }
+    
     public function build()
     {
         $html = "<form action='$this->action' method='$this->method'>";
