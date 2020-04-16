@@ -13,7 +13,7 @@ class NumberField extends HtmlField{
         }
     }
     function __tostring(){
-    return "<input type='number' name='$this->$fieldName' value='$this->fieldValue'>";
+    return "<input type='number' name='$this->fieldName' value='$this->fieldValue'>";
     }
 }
 ?>
