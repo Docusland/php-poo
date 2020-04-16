@@ -1,4 +1,5 @@
 <?php
+
 include 'Form.php';
 /* include 'HtmlField.php';
 include 'CheckboxField.php';
@@ -22,7 +23,7 @@ $form->addNumberField('min_players',$min_players);
 $form->addNumberField('max_players',$max_players);
 $form->addCheckboxField('is_available', $is_available);
 
-$form->addSelectField([1=>'Mr', 2=>'Mme', 3=>'Other'], 'Choisissez un titre', 3);
+/* $form->addSelectField([1=>'Mr', 2=>'Mme', 3=>'Other'], 'Choisissez un titre', 1); */
 
 $form->addSubmitButton('Modifier');
 

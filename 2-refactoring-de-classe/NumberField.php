@@ -1,11 +1,8 @@
 <?php 
-class NumberField {
-    private $Name;
-    private $Value;
+class NumberField extends HtmlField{
 
-    public function addNumberField(String $Name, int $Value) {
-        $this->fields[] = "<input type='number' name='$Name' value='$Value'>";
-        return $this;
+    public function __toString()
+    {
+        return "<input type='number' name='$this->name' value='$this->value'>";
     }
 }
-?>

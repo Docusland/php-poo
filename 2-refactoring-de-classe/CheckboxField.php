@@ -1,14 +1,8 @@
 <?php 
-class NumberField {
-    private $Name;
-    private $Value;
+class CheckboxField extends HtmlField{
 
-    public function addCheckboxField(String $Name, bool $Value)
+    public function __toString()
     {
-        $checked = ($Value)?'checked':'';
-        $this->fields[] = "<input type='checkbox' name='$Name' $checked>";
-        return $this;
-
+        return "<input type='checkbox' name='$this->name'>";
     }
 }
-?>
