@@ -12,12 +12,14 @@ include 'inc/Boardgame.php';
     <h1>Liste des jeux de société</h1>
     <!-- Afficher la liste des jeux -->
     <?php
-        $bdd = DBConnection::getInstance()->getConnection();
-        $games = $bdd->query('select * from boardgames', PDO::FETCH_CLASSTYPE)->fetchAll(PDO::FETCH_CLASS, "boardgames"); // ça marche pas
+        $bdd = DBConnection::getInstance()->getConnection()->query('select * from boardgames', PDO::FETCH_CLASSTYPE)->fetchAll(PDO::FETCH_CLASS, "Boardgames");
+        $games = $bdd->fetchAll(PDO::FETCH_CLASS, "Boardgames")// ça marche pas
         /*foreach ($games as $game)
         {
-            $boardgame = new Boardgames($game);
-            echo $boardgame;
+            foreach ($game as $value)
+            {
+                echo $value."<br>";
+            }
         }*/
     ?>
   </body>
