@@ -1,16 +1,16 @@
 <?php
 class Boardgame {
     
-    private $name;
-    private $players_min;
-    private $players_max;
-    private $age_min;
-    private $age_max;
-    private $picture;
+    public $name;
+    public $players_min;
+    public $players_max;
+    public $age_min;
+    public $age_max;
+    public $picture;
 
-    public function __construct($data){
-        // TODO : Hydrate the object.
-    }
+  /*   public function __construct($data){
+        $this->hydrate($data);
+    } */
 
     public function getName() {
         return $this->name;
