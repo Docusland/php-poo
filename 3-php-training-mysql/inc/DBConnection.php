@@ -8,8 +8,8 @@ class DBConnection {
     private $conn;
     
     private $host = 'localhost';
-    private $user = 'root';
-    private $pass = "";
+    private $user = '4wge';
+    private $pass = "Svlf:'H=35";
     private $name = 'boardgame';
      
     // The db connection is established in the private constructor.

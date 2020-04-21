@@ -10,6 +10,7 @@ $donnees = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <html>
   <head>
     <meta charset="utf-8">
+    <link href="styles/style.css" rel="stylesheet" type="text/css">
     <title>Jeux de société</title>
   </head>
   <body>
@@ -37,6 +38,10 @@ $donnees = $stmt->fetchAll(PDO::FETCH_ASSOC);
           <td><?=$donnee['age_min']?></td>
           <td><?=$donnee['age_max']?></td>
           <td><img src="<?=$donnee['picture']?>"></td>
+          <td>
+            <a href="update.php?id=<?$donnee['id']?>">Modifier</a>
+            <a href="delete.php?id=<?$donnee['id']?>">Supprimer</a>
+          </td>
         </tr>
         <?php endforeach; ?>
       </tbody>
