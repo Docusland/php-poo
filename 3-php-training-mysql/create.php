@@ -10,7 +10,7 @@
 <body>
 	<?php
 		if('POST' == $_SERVER['REQUEST_METHOD']) {
-
+			
 		}
 	?>
 	<a href="./read.php">Liste des jeux</a>

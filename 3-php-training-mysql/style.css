@@ -1,0 +1,15 @@
+.main1{
+    display:flex;
+    border:1px solid black;
+}
+.cell{
+    border: 1px solid black;
+    width:6%;
+}
+.main{
+    display:flex; 
+    border:1px solid black;
+}
+.tableau{
+    width: 6.1%;
+}
