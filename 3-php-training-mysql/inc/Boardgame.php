@@ -7,6 +7,7 @@ class Boardgame {
     private $age_min;
     private $age_max;
     private $picture;
+    private $id; 
 
     public function __construct($data){
         // TODO : Hydrate the object.
@@ -19,9 +20,18 @@ class Boardgame {
         $this->name = $name;
         return $this;
     }
+    public function getId() {
+        return $this->id;
+    }
+
+    public function setId(int $id) {
+        $this->id = $id;
+        return $this;
+    }
     public function getPlayersMin() {
         return $this->players_min;
     }
+
     public function setPlayersMin(int $players_min) {
         $this->players_min = $players_min;
         return $this;
