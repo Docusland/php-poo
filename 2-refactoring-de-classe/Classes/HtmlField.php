@@ -10,7 +10,9 @@ abstract class HtmlField {
     public function __construct($name, $value) {
         if ($this->isValid($value)) { 
             $this->name= $name;
-            $this->value = $value;
+            $this->value = htmlspecialchars($value);
         }
     }
+    abstract public function __toString();
 }
+
