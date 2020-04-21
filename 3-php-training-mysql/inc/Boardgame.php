@@ -9,9 +9,24 @@ class Boardgame {
     private $picture;
 
     public function __construct($data){
-        // TODO : Hydrate the object.
+        foreach($data as $key => $value)
+        {
+            $method = 'set'.ucfirst($key);
+            if(method_exists($this, $method))
+            {
+                $this->$method($value);
+            }
+        }
     }
 
+    public function getId()
+    {
+        return $this->id;
+    }
+    public function setId(int $id): void
+    {
+        $this->id = $id;
+    }
     public function getName() {
         return $this->name;
     }
