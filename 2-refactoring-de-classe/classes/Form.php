@@ -1,7 +1,8 @@
 <?php
 
-spl_autoload_register(function ($class) {
-    include $class.'.php';
+spl_autoload_register(function ($className) {
+    $className = str_replace("\\", DIRECTORY_SEPARATOR, $className);
+    include $className.'.php';
 });
 
 class Form{
@@ -15,6 +16,7 @@ class Form{
     {
         $this->action = $action;
         $this->method = $method;
+        $this->fields = [];
     }
     private function addField(HtmlField $field) {
         $this->fields[] = $field;
@@ -32,6 +34,19 @@ class Form{
     public function addCheckboxField(String $name, bool $value)
     {
         return $this->addField(new CheckboxField($name, $value));
+    }
+    /**
+     * TODO : Refactor this to a class SelectboxField
+     */
+    public function addSelectboxField(Array $options, String $name, int $selected_id)
+    {
+        $html ="<select name=$name>";
+        foreach ($options as $i => $option){
+            $html .= "<option value ='$i'>$option</option>";
+        }
+        $html .="</select>";
+        $this->fields[] = $html;
+        return $this;
     }
     public function addSubmitButton($text)
     {
