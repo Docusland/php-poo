@@ -134,7 +134,7 @@ class BoardgameController{
 ```
 Nous allons prendre en exemple l'action _read_. Pour rappel,lorsqu'on appelle cette action on doit récupérer toutes les jeux de société et les afficher sous forme d'un tableau.
 
-Comme on veut récupérer des données de la base de données il faudra créer le _model_ `Boardgame` et appeler la méthode `readAll()`.
+Comme on veut récupérer des données de la base de données il faudra les stocker dans le _model_ `Boardgame`. Puis les afficher.
 ```php
 //controller/BoardgameController
 public function read(){
@@ -145,6 +145,7 @@ public function read(){
 }
 ```
 Vous avez remarqué le `include` à la fin de la méthode. Comme vous pouvez vous en doutez, c'est la _view_ pour cette action.
+
 ## La View
 
 Normallement vous l'avez réalisé au sein de l'étape précédente.
