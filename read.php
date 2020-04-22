@@ -1,49 +1,50 @@
-<?php 
- 
+<?php
 include 'inc/DBConnection.php';
 
-function readBoardgames(){
-$bdd = DBConnection::getInstance()->getConnection();
-$reponses = $bdd->query('select* from boardgames')->fetchAll();
-$bdd->query($reponse);{
- /*$row=1;
-   while ($row <= $id) {
-        echo $row;
-         $row++;
-       }
-     return($row);
-  }
-}*/
+
+$bdd = DBConnection::getInstance();
+$stmt=$bdd->getConnection()->query('SELECT * FROM boardgames');
+$donnees=$stmt->fetchAll();
+
 ?>
 
 <!DOCTYPE html>
 <html>
   <head>
+  
     <meta charset="utf-8">
-    <title>Jeux de société</title>
+      <title>Jeux de sociétés</title>
+      <link rel ="stylesheet" href="style/style.css">
   </head>
+
   <body>
     <h1>Liste des jeux de société</h1>
-      <div>*</div>
-      <div>nom</div>
-      <div>players_min</div>
-      <div>players_max</div>
-      <div>age_min</div>
-      <div>age_max</div>
-      <div>picture</div>
-   
-  <?php foreach ($reponses as $reponse): ?>
+    <!-- Afficher la liste des jeux-->
+
+    <table class="tableau">
+      <tr>
+        <td>Id</td>
+        <td>Nom</td>
+        <td>Min joueur</td>
+        <td>Max joueur</td>
+        <td>Age min</td>
+        <td>Age max</td>
+        <td>Image</td>
+      </tr>
+
+        <?php foreach ($donnees as $donnee): ?>
+      <tr>
+        <td><?=$donnee['id']?></td>
+        <td><?=$donnee['name']?></td>
+        <td><?=$donnee['players_min']?></td>
+        <td><?=$donnee['players_max']?></td>
+        <td><?=$donnee['age_min']?></td>
+        <td><?=$donnee['age_max']?></td>
+        <td><img class="image" src="<?=$donnee['picture']?>"></td>
     
-      <div><?=$reponse['id']?></div>
-      <div><?=$reponse['players_min']?></div>
-      <div><?=$reponse['players_max']?></div>
-      <div><?=$reponse['age_min']?></div>
-      <div><?=$reponse['age_max']?></div>
-      <div><?=$reponse['picture']?></div>
+       <?php endforeach; ?>
+      </tr>
+    </table>
 
-  <?php endforeach; ?>
   </body>
-  
-  
 </html>
-
