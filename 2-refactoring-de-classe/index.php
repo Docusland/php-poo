@@ -1,24 +1,6 @@
 <?php
-    include 'classes/Form.php';
-?>
+include_once 'Form.php';
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PHP POO</title>
-    <style>
-        .error{
-            color:red;
-            font-weight: bold;
-        }
-    </style>
-</head>
-<body>
-    
-
-<?php
     $action = '#';
     $method = 'POST';
     $name = 'a';
@@ -40,5 +22,3 @@
     }
     echo $form->build();
 ?>
-</body>
-</html>
