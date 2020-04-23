@@ -1,17 +1,37 @@
 <?php
 class Boardgame {
-    
-    public $name;
-    public $players_min;
-    public $players_max;
-    public $age_min;
-    public $age_max;
-    public $picture;
+    private $id;
+    private $name;
+    private $players_min;
+    private $players_max;
+    private $age_min;
+    private $age_max;
+    private $picture;
 
-  /*   public function __construct($data){
-        $this->hydrate($data);
-    } */
+    public function __construct( $data = [] ){
+        if ( !empty($data) ) {
+            $this->hydrate($data);
+        }
+    }
+    private function hydrate($data) {
+        foreach ($data as $key => $value)
+        {
+            $method = 'set'.str_replace('_', '', ucwords($key, '_')); // replace snake_case to PascalCase
 
+            if (method_exists($this, $method))  // check if setter exists and execute it.
+            {
+                $this->$method($value);
+            }
+        }
+    }
+
+    public function getId() {
+        return $this->id;
+    }
+    public function setId(int $id) {
+        $this->id = $id;
+        return $this;
+    }
     public function getName() {
         return $this->name;
     }
