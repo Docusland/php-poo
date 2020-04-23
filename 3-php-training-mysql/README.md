@@ -10,6 +10,8 @@ Je vous ai créé la base de données. vous pouvez la récupérer *database/boar
 
 Cette base de données ne contient, pour l'instant, que la table *boardgame* (jeu de société)
 
+A la racine de ce dépot setrouve un fichier ̀`credentials.sample.ini`. Renommez le en `credentials.ini` et définissez correctement les valeurs.
+
 ## Afficher la liste des jeux
 Soit le **R** de CRUD.
 

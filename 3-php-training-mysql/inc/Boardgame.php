@@ -1,10 +1,6 @@
 <?php
-
-include 'DBConnection.php';
-
-class Boardgames {
-
-    private $id;
+class Boardgame {
+    
     private $name;
     private $players_min;
     private $players_max;
@@ -12,33 +8,10 @@ class Boardgames {
     private $age_max;
     private $picture;
 
-    public function __construct(array $datas=[])
-    {
-        if (!empty($datas))
-        {
-            $this->hydrate($datas);
-        }
+    public function __construct($data){
+        // TODO : Hydrate the object.
     }
-    public function hydrate(array $data)
-    {
-        foreach ($data as $key => $value)
-        {
-            $method = 'set'.ucfirst($key);
 
-            if (method_exists($this, $method))
-            {
-                $this->$method($value);
-            }
-        }
-    }
-    public function getId()
-    {
-        return $this->id;
-    }
-    public function setId(int $id): void
-    {
-        $this->id = $id;
-    }
     public function getName() {
         return $this->name;
     }
