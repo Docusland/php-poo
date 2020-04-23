@@ -1,6 +1,10 @@
 <?php 
 	include 'inc/DBConnection.php';
+	include 'inc/Boardgame.php';
 	$bdd = DBConnection::getInstance();
+	$msg = "";
+	$sql = 'INSERT INTO boardgames (name, players_min, players_max, age_min, age_max, picture) VALUES (?, ?, ?, ?, ?, ?)'
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -16,13 +20,21 @@
 			$players_max = $_POST['players_max'];
 			$age_min = $_POST['age_min'];
 			$age_max = $_POST['age_max'];
-			$picture = $_POST['picture'];
+			$picture = $_POST['picture']; 
 
-			$stmt=$bdd->getConnection()->query("INSERT INTO `boardgames` (`name`, `players_min`, `players_max`, `age_min`, `age_max`, `picture`) 
-			VALUES ($name, $players_min, $players_max, $age_min, $age_max, $picture)");
-
+			$stmt=$bdd->getConnection()->prepare($sql);
+			$stmt->execute([$name, $players_min, $players_max, $age_min, $age_max, $picture]);
+			$succes = $stmt->fetchAll(PDO::FETCH_CLASS, Boardgame::class);
+			$msg = "Jeu ajouté avec succès !";
+			
+			if ($succes) {
+				echo "le jeux à bien été créé";
+			} else {
+				echo "erreur dans la création";
+				error_log($stmt->errorCode());
+			}
 		}
-	?>
+	?> 
 	<a href="./read.php">Liste des jeux</a>
 	<h1>Ajouter un jeu de société</h1>
 	<form action="#" method="post">
@@ -52,5 +64,9 @@
 		</div>
 		<button type="submit" name="button">Envoyer</button>
 	</form>
+	<?php if ($msg) {
+		echo "<p>$msg</p>";
+	} 
+	?>
 </body>
 </html>

@@ -13,7 +13,6 @@
 <?php 
 include 'inc/DBConnection.php';
 
-
 $bdd = DBConnection::getInstance();
 $stmt=$bdd->getConnection()->query('SELECT * FROM boardgames');
 $donnees=$stmt->fetchAll();
