@@ -7,10 +7,10 @@ class DBConnection {
     private static $instance = null;
     private $conn;
     
-    private $host = 'localhost';
+    private $host = 'localhost:8889';
     private $user = 'root';
-    private $pass = '';
-    private $name = 'boardgame';
+    private $pass = 'root';
+    private $name = 'boardgames';
      
     // The db connection is established in the private constructor.
     private function __construct()
@@ -24,7 +24,7 @@ class DBConnection {
     {
       if(!self::$instance)
       {
-        self::$instance = new ConnectDb();
+        self::$instance = new DBConnection();
       }
      
       return self::$instance;
