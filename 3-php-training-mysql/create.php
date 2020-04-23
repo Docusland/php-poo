@@ -1,4 +1,5 @@
 <?php
+ include_once 'inc/DBConnection.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -8,8 +9,30 @@
 </head>
 <body>
 	<?php
-		if('POST' == $_SERVER['REQUEST_METHOD']) {
-		}
+		$bdd = DBConnection::getInstance()->getConnection();
+		if($_SERVER['REQUEST_METHOD'] = 'POST') {
+	
+			$name = isset($_POST['name']);
+			$age_min = isset($_POST['age_min']);
+			$age_max = isset($_POST['age_max']);
+			$players_min = isset($_POST['players_min']);
+			$players_max = isset($_POST['players_max']);
+			$picture = isset($_POST['picture']);
+
+			if (!empty($name) AND !empty($age_min) AND !empty($age_max) AND !empty($players_min) AND !empty($players_max) AND !empty($picture))
+			{
+				$bdd->query('INSERT INTO boardgames (name,players_min,players_max,age_min,age_max,picture) VALUES("'.$name.'","'.$players_min.'","'.$players_max.'","'.$age_min.'","'.$age_max.'","'.$picture.'"');
+				
+				$pop='Votre formulaire a bien été envoyé';
+				echo '<script type="text/javascript">window.alert("'.$pop.'");</script>';
+			}
+			else 
+			{
+				$erreur='Erreur, il manque des valeurs';
+				echo '<script type="text/javascript">window.alert("'.$erreur.'");</script>';
+			}
+		
+}
 	?>
 	<a href="./read.php">Liste des jeux</a>
 	<h1>Ajouter un jeu de société</h1>

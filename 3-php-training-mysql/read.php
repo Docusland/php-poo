@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="Style.css">
   </head>
   <body>
+    <a href="./create.php">create</a>
     <h1>Liste des jeux de société</h1>
     <!-- Afficher la liste des jeux -->
     <?php
