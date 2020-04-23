@@ -8,14 +8,14 @@ $defaultController = 'BoardgameController';
 // TODO : check if the null coalescing works here
 $controllerAsked = empty($_GET['controller']) ? $defaultController : $_GET['controller'];
 $actionAsked = empty($_GET['action']) ? '' : $_GET['action'];
-$id = empty($_GET['id']) ? '' : $_GET['id']; 
+$id = empty($_GET['id']) ? '' : $_GET['id'];
 
 
 // Set the corresponding Controller.
-if (class_exists($controllerAsked.'Controller')) {
-  $controllerName = $controllerAsked.'Controller';
+if (class_exists($controllerAsked . 'Controller')) {
+    $controllerName = $controllerAsked . 'Controller';
 } else {
-  $controllerName = $defaultController;
+    $controllerName = $defaultController;
 }
 $controller = new $controllerName();
 
