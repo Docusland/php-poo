@@ -1,5 +1,6 @@
-<?php
-
+<?php 
+	include 'inc/DBConnection.php';
+	$bdd = DBConnection::getInstance();
 ?>
 <!DOCTYPE html>
 <html>
@@ -10,6 +11,15 @@
 <body>
 	<?php
 		if('POST' == $_SERVER['REQUEST_METHOD']) {
+			$name = $_POST['name']; 
+			$players_min = $_POST['players_min'];
+			$players_max = $_POST['players_max'];
+			$age_min = $_POST['age_min'];
+			$age_max = $_POST['age_max'];
+			$picture = $_POST['picture'];
+
+			$stmt=$bdd->getConnection()->query("INSERT INTO `boardgames` (`name`, `players_min`, `players_max`, `age_min`, `age_max`, `picture`) 
+			VALUES ($name, $players_min, $players_max, $age_min, $age_max, $picture)");
 
 		}
 	?>
@@ -21,20 +31,20 @@
 			<input type="text" name="name" value="">
 		</div>
 		<div>
-			<label for="min_age">Min Age</label>
-			<input type="number" name="min_age" value="">
+			<label for="age_min">Min Age</label>
+			<input type="number" name="age_min" value="">
 		</div>
 		<div>
-			<label for="max_age">Max Age</label>
-			<input type="number" name="max_age" value="">
+			<label for="age_max">Max Age</label>
+			<input type="number" name="age_max" value="">
 		</div>
 		<div>
-			<label for="min_players">Min Players</label>
-			<input type="number" name="min_players" value="">
+			<label for="players_min">Min Players</label>
+			<input type="number" name="players_min" value="">
 		</div>
 		<div>
-            <label for="max_players">Max Players</label>
-            <input type="number" name="max_players" value="">
+            <label for="players_max">Max Players</label>
+            <input type="number" name="players_max" value="">
         </div>
 		<div>
 			<label for="picture">URL of a picture</label>

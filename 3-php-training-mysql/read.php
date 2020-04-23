@@ -11,19 +11,13 @@
 </html>
 
 <?php 
-include 'inc/DBConnectiion.php';
-function readBoardGames()
-{
-  $bdd = DBConnection::getInstance()->getConnection();
-  $reponse = $bdd->query('select * from boardgames');
-  $raws = $bdd->query($reponse);
-  {
-    while($row = $sth->fetch()) { 
-      print_r($row) ; 
-      echo $row['id'];
-      }
-  }
-}
+include 'inc/DBConnection.php';
+
+
+$bdd = DBConnection::getInstance();
+$stmt=$bdd->getConnection()->query('SELECT * FROM boardgames');
+$donnees=$stmt->fetchAll();
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -47,12 +41,12 @@ function readBoardGames()
         </tr>
       </thead>
       <tbody>
-        <?php foreach ($donnees as $donnee): ?>
+        <?php foreach ($donnees as $donnee): ?> 
         <tr>
           <td><?=$donnee['id']?></td>
           <td><?=$donnee['name']?></td>
-          <td><?=$donnee['player_min']?></td>
-          <td><?=$donnee['player_max']?></td>
+          <td><?=$donnee['players_min']?></td>
+          <td><?=$donnee['players_max']?></td>
           <td><?=$donnee['age_min']?></td>
           <td><?=$donnee['age_max']?></td>
           <td><img src="<?=$donnee['picture']?>"></td>
@@ -65,4 +59,4 @@ function readBoardGames()
       </tbody>
     </table>
   </body>
-</html>
+</html> 
