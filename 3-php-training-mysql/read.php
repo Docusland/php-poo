@@ -1,4 +1,4 @@
- <?php include 'inc/DBConnection.php' 
+ <?php include 'inc/DBConnection.php';
    
     $db_connection = DBConnection::getInstance();
 
@@ -27,7 +27,8 @@
       <p>Image</p>
 
     </div>
-<?php foreach($donnees as $donne); ?>
+
+<?php foreach($donnees as $donnee): ?>
 
 <p><?=$donnee['id']?></p>
 <p><?=$donnee['name']?></p>
@@ -37,5 +38,6 @@
 <p><?=$donnee['age_max']?></p>
 <img src="<?=$donnee['picture']?>">
 
+<?php endforeach ; ?> 
   </body>
 </html>
