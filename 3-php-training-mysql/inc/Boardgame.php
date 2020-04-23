@@ -12,11 +12,11 @@ class Boardgames {
     private $age_max;
     private $picture;
 
-    public function __construct(array $data)
+    public function __construct(array $datas=[])
     {
-        if (!empty($data))
+        if (!empty($datas))
         {
-            $this->hydrate($data);
+            $this->hydrate($datas);
         }
     }
     public function hydrate(array $data)
