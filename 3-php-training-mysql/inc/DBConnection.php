@@ -20,8 +20,7 @@ class DBConnection {
         throw new Exception('missing credentials file. Please check your code.');
       }
       try {
-       $this->conn = new PDO("mysql:host=".$config['server'].":".$config['port'].";dbname=".$config['dbname'],$config['username'],$config['password'],
-      array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'utf8'"));
+       $this->conn = new PDO("mysql:host=".$config['server'].":".$config['port'].";dbname=".$config['dbname'],$config['username'],$config['password'],      array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'utf8'"));      
       } catch (PDOException $e) {
         error_log('Error whilst connecting to database. ');
         // Please check your ini file 
