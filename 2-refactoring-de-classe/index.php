@@ -1,5 +1,6 @@
 <?php
-    include 'classes/Form.php';
+
+    include 'classes/Form_2.php';
 ?>
 
 <!DOCTYPE html>
@@ -17,7 +18,6 @@
 </head>
 <body>
     
-
 <?php
     $action = '#';
     $method = 'POST';
@@ -42,3 +42,4 @@
 ?>
 </body>
 </html>
+
